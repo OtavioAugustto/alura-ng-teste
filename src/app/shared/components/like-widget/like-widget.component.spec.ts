@@ -26,16 +26,17 @@ describe(LikeWidgetComponent.name, () => {
   });
 
   it('Should auto-generate ID during ngOnInit when (@Input id) is not assigned', () => {
-    // fixture.detectChanges();
+    fixture.detectChanges();
     expect(component.id).toBeTruthy();
   });
 
   it('Should NOT auto-generate ID during ngOnInit when (@Input id) is assigned', () => {
     const someId = 'someId';
-    // fixture.detectChanges();
     component.id = someId;
+    fixture.detectChanges();
     expect(component.id).toBe(someId);
   });
+
 
   it(`#${LikeWidgetComponent.prototype.like.name}
     should trigger (@Output liked) when called`, () => {
@@ -44,5 +45,6 @@ describe(LikeWidgetComponent.name, () => {
     component.like();
     expect(component.liked.emit).toHaveBeenCalled();
   });
+
 
 });
